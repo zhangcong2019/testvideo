@@ -1,0 +1,11 @@
+ffmpeg -i 4k.h264 -c:v libx265 -vtag hvc1 -b:v 16M -minrate 16M -maxrate 16M -bufsize 800k -x265-params "rc=cbr:ref=1:bframes=0" -profile:v main out_4k.h265
+
+ffmpeg -i 4k.h264 -c:v libx264 -vtag avc -b:v 16M -minrate 16M -maxrate 16M -bufsize 800k -x264-params "nal-hrd=cbr:ref=1:bframes=0" -profile:v main out_4k.h264
+
+ffmpeg -i 1080p.h264 -s 720x480 -c:v libx265 -vtag hvc1 -b:v 1M -minrate 1M -maxrate 1M -bufsize 50k -x265-params "rc=cbr:ref=1:bframes=0" -profile:v main out_480p.h265
+
+ffmpeg -i 1080p.h264 -s 720x480 -c:v libx264 -vtag avc -b:v 1M -minrate 1M -maxrate 1M -bufsize 50k -x264-params "nal-hrd=cbr:ref=1:bframes=0" -profile:v main out_480p.h264
+
+ffmpeg -i 1080p.h264 -c:v libx265 -vtag hvc1 -b:v 4M -minrate 4M -maxrate 4M -bufsize 200k -x265-params "rc=cbr:ref=1:bframes=0" -profile:v main out_1080p.h265
+
+ffmpeg -i 1080p.h264 -c:v libx264 -vtag avc -b:v 4M -minrate 4M -maxrate 4M -bufsize 200k -x264-params "nal-hrd=cbr:ref=1:bframes=0" -profile:v main out_1080p.h264
